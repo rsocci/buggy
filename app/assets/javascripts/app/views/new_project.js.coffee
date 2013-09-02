@@ -12,7 +12,7 @@ class App.Views.NewProject extends Backbone.View
 		App.Vent.trigger "project:create", @model
 
 	render: ->
-		@$el.html(@template())
+		@$el.html(@template(@model.toJSON()))
 		@
 
 	saveProject: (e) ->
@@ -20,3 +20,4 @@ class App.Views.NewProject extends Backbone.View
 		@model.set name: @$('#name').val()
 		@model.set description: @$('#description').val()
 		@model.save() #triggers 'sync' event 
+					# if "id", smart enough to do "put"
